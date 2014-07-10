@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+  <meta name="robots" content="noindex, nofollow">
+  <% if (locals.page_descr) { %><meta name="description" content="<%=: page_descr | capitalize %>" /><% } %>
+  <% if (locals.page_title) { %><title><%=: page_title | capitalize %></title><% } %>
+  <link rel="icon" href="<%= asset('img/favicon.ico') %>"/>
+<% (locals.css || []).forEach(function(src) { -%>
+  <link rel="stylesheet" href="<%= dist(src) %>" />
+<% }) -%>
+</head>
+<body>

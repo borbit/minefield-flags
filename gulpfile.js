@@ -38,12 +38,15 @@ gulp.task('compile-less', function() {
 
 gulp.task('compile-coffee', function() {
   var compile = gulpBrowserify({
-    transform: ['coffeeify', 'browserify-ejs']
-  , extensions: ['.coffee']
+    extensions: ['.coffee']
   , detectGlobals: false
   })
 
   compile.on('prebundle', function(bundler) {
+    bundler.transform('browserify-ejs')
+    bundler.transform({sourceMap: false, coffeeout: true}, 'coffee-reactify')
+    bundler.transform('coffeeify')
+
     getExternalModules().forEach(function(module) {
       bundler.exclude(module.name)
     })
@@ -169,6 +172,9 @@ function getExternalModules() {
 
   var modules = fs.readFileSync(commonModule)
   modules = modules.toString().split('\n')
+  modules = modules.filter(function(module) {
+    return module.length
+  })
   modules = modules.map(function(module) {
     var path = module.split("'")[1]
     var name = path.split('/').pop()
