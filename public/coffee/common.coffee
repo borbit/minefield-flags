@@ -1,1 +1,1 @@
-require 'react'
+require '../js/libs/react'

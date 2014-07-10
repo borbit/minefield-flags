@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow">
   <% if (locals.page_descr) { %><meta name="description" content="<%=: page_descr | capitalize %>" /><% } %>
   <% if (locals.page_title) { %><title><%=: page_title | capitalize %></title><% } %>
-  <link rel="icon" href="<%= asset('img/favicon.ico') %>"/>
+  <link rel="icon" href="<%= asset('img/favicon.gif') %>"/>
 <% (locals.css || []).forEach(function(src) { -%>
   <link rel="stylesheet" href="<%= dist(src) %>" />
 <% }) -%>

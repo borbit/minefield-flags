@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -o nounset
+
+APP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
+BIN_DIR="${APP_DIR}/node_modules/.bin"
+COFFEE="${BIN_DIR}/coffee"
+
+"${COFFEE}" "${APP_DIR}/index.coffee"

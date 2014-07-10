@@ -11,7 +11,6 @@ app.set 'view engine', 'ejs'
 app.engine 'ejs', engines.ejs
 app.enable 'trust proxy'
 app.use express.static __dirname + '/public/'
-app.use express.errorHandler()
 
 try
   manifest = require config.dist_manifest_path
