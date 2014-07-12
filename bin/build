@@ -6,4 +6,4 @@ APP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
 BIN_DIR="${APP_DIR}/node_modules/.bin"
 GULP="${BIN_DIR}/gulp"
 
-"${GULP}" dist
+NODE_PATH="${APP_DIR}" "${GULP}" dist
