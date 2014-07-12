@@ -1,6 +1,6 @@
 express = require 'express'
 engines = require 'consolidate'
-config  = require './config'
+config  = require 'config'
 
 app = express()
 

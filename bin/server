@@ -4,6 +4,6 @@ set -o nounset
 
 APP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
 BIN_DIR="${APP_DIR}/node_modules/.bin"
-COFFEE="${BIN_DIR}/coffee"
+COFFEE="${BIN_DIR}/cjsx"
 
-"${COFFEE}" "${APP_DIR}/index.coffee"
+NODE_PATH="${APP_DIR}" "${COFFEE}" "${APP_DIR}/index.coffee"
