@@ -1,0 +1,171 @@
+.clearfix() {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.gradient-v(@start, @stop) {
+  .gradient-v(@start, @stop, 100%);
+}
+
+.gradient-v(@start, @stop, @length) {
+  background-image: -webkit-linear-gradient(top, @start 0%, @stop @length);
+  background-image:    -moz-linear-gradient(top, @start 0%, @stop @length);
+  background-image:     -ms-linear-gradient(top, @start 0%, @stop @length);
+  background-image:      -o-linear-gradient(top, @start 0%, @stop @length);
+  background-image:         linear-gradient(top, @start 0%, @stop @length);
+}
+
+.gradient-h(@start, @stop) {
+  .gradient-h(@start, @stop, 100%);
+}
+
+.gradient-h(@start, @stop, @length) {
+  background-image: -webkit-linear-gradient(left, @start 0%, @stop @length);
+  background-image:    -moz-linear-gradient(left, @start 0%, @stop @length);
+  background-image:     -ms-linear-gradient(left, @start 0%, @stop @length);
+  background-image:      -o-linear-gradient(left, @start 0%, @stop @length);
+  background-image:         linear-gradient(left, @start 0%, @stop @length);
+}
+
+.transition(@rules) {
+  -webkit-transition: @rules;
+     -moz-transition: @rules;
+      -ms-transition: @rules;
+       -o-transition: @rules;
+          transition: @rules;
+}
+
+.transition-property(@rules) {
+  -webkit-transition-property: @rules;
+     -moz-transition-property: @rules;
+      -ms-transition-property: @rules;
+       -o-transition-property: @rules;
+          transition-property: @rules;
+}
+
+.transition-duration(@rules) {
+  -webkit-transition-duration: @rules;
+     -moz-transition-duration: @rules;
+      -ms-transition-duration: @rules;
+       -o-transition-duration: @rules;
+          transition-duration: @rules;
+}
+
+.transition-delay(@rules) {
+  -webkit-transition-delay: @rules;
+     -moz-transition-delay: @rules;
+      -ms-transition-delay: @rules;
+       -o-transition-delay: @rules;
+          transition-delay: @rules;
+}
+
+.transition-timing-function(@rules) {
+  -webkit-transition-timing-function: @rules;
+     -moz-transition-timing-function: @rules;
+      -ms-transition-timing-function: @rules;
+       -o-transition-timing-function: @rules;
+          transition-timing-function: @rules;
+}
+
+.transition-transform(@rules) {
+  -webkit-transition: -webkit-transform @rules;
+     -moz-transition: -moz-transform @rules;
+      -ms-transition: -ms-transform @rules;
+       -o-transition: -o-transform @rules;
+          transition: transform @rules;
+}
+
+.transform(@rules) {
+  -webkit-transform: @rules;
+     -moz-transform: @rules;
+      -ms-transform: @rules;
+       -o-transform: @rules;
+          transform: @rules;
+}
+
+.transform-origin(@rules) {
+  -webkit-transform-origin: @rules;
+     -moz-transform-origin: @rules;
+      -ms-transform-origin: @rules;
+       -o-transform-origin: @rules;
+          transform-origin: @rules;
+}
+
+.box-sizing(@val) {
+  -moz-box-sizing: @val;
+       box-sizing: @val;
+}
+
+.transition(@rules) {
+  -webkit-transition: @rules;
+     -moz-transition: @rules;
+      -ms-transition: @rules;
+       -o-transition: @rules;
+          transition: @rules;
+}
+
+.user-select(@val) {
+  -webkit-user-select: @val;
+   -khtml-user-select: @val;
+     -moz-user-select: @val;
+      -ms-user-select: @val;
+          user-select: @val;
+}
+
+.column-count(@val) {
+  -webkit-column-count: @val;
+     -moz-column-count: @val;
+      -ms-column-count: @val;
+       -o-column-count: @val;
+          column-count: @val;
+}
+
+.column-gap(@val) {
+  -webkit-column-gap: @val;
+     -moz-column-gap: @val;
+      -ms-column-gap: @val;
+       -o-column-gap: @val;
+          column-gap: @val;
+}
+
+.column-fill(@val) {
+  -webkit-column-fill: auto;
+     -moz-column-fill: auto;
+      -ms-column-fill: auto;
+       -o-column-fill: auto;
+          column-fill: auto;
+}
+
+.column-break-inside(@val) {
+  -webkit-column-break-inside: @val;
+     -moz-column-break-inside: @val;
+          column-break-inside: @val;
+}
+
+.animation-name(@name) {
+  -webkit-animation-name: @name;
+  animation-name: @name;
+}
+
+.animation-duration(@duration) {
+  -webkit-animation-duration: @duration;
+  animation-duration: @duration;
+}
+
+.animation-timing-function(@function) {
+  -webkit-animation-timing-function: @function;
+  animation-timing-function: @function;
+}
+
+.animation-play-state(@state) {
+  -webkit-animation-play-state: @state;
+  animation-play-state: @state;
+}

@@ -1,7 +1,7 @@
 {
   "name": "blank",
   "version": "0.0.0",
-  "description": "Frontend server starter kit based on Express, Gulp, Browserify, CoffeeScript, Less and React",
+  "description": "Front-end server starter kit based on Express, Gulp, Browserify, CoffeeScript, Less and React",
   "author": "Serge Borbit",
   "dependencies": {
     "gulp": "^3.8.5",
