@@ -1,0 +1,27 @@
+.toolbar {
+  &__button {
+    float: right;
+    position: relative;
+    display: inline-block;
+    padding: 12px 16px;
+    margin: 4px 0 14px 0;
+    width: 100%;
+    background-color: #222;
+    border: solid #fff;
+    border-width: 0 4px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__button:after {
+    position: absolute;
+    z-index: -1;
+    top: -4px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    border: solid #fff;
+    border-width: 4px 0;
+  }
+}

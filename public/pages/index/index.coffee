@@ -1,4 +1,6 @@
 React = require 'react'
-Canvas = require '../../blocks/canvas/canvas'
+Easel = require '../../blocks/easel/easel'
+Tabs = require '../../blocks/tabs/tabs'
 
-React.renderComponent Canvas(width: 510, height: 510, size: 17), document.querySelector '.body'
+React.renderComponent Easel(width: 510, height: 510, size: 17), document.querySelector '.body__canvas'
+React.renderComponent Tabs(), document.querySelector '.body__tabs'

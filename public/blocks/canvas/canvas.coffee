@@ -3,33 +3,59 @@ React = require 'react'
 
 module.exports = React.createClass
   componentDidMount: ->
-    @ctx = @getDOMNode().getContext '2d'
+    canvas = @getDOMNode()
+
+    @cellW = ~~(@props.width / @props.size)
+    @cellH = ~~(@props.height / @props.size)
+    @offsetL = canvas.offsetLeft
+    @offsetT = canvas.offsetTop
+
+    @mousePressed = no
+    @ctx = canvas.getContext '2d'
     @drawGrid()
 
   onClick: (event) ->
-    console.log @ctx
+    cellX = ~~((event.pageX - @offsetL) / @cellW)
+    cellY = ~~((event.pageY - @offsetT) / @cellH)
+    
+    @ctx.fillStyle = @props.color
+    @ctx.fillRect cellX * @cellW, cellY * @cellH, @cellW, @cellH
+
+  onMouseDown: ->
+    @mousePressed = yes
+
+  onMouseUp: ->
+    @mousePressed = no
+
+  onMouseMove: (e) ->
+    if @mousePressed
+      cellX = ~~((event.pageX - @offsetL) / @cellW)
+      cellY = ~~((event.pageY - @offsetT) / @cellH)
+      
+      @ctx.fillStyle = @props.color
+      @ctx.fillRect cellX * @cellW, cellY * @cellH, @cellW, @cellH
 
   render: ->
     <canvas className="canvas"
       width={@props.width}
       height={@props.height}
+      onMouseMove={@onMouseMove}
+      onMouseDown={@onMouseDown}
+      onMouseUp={@onMouseUp}
       onClick={@onClick}>
     </canvas>
 
   drawGrid: ->
     @ctx.beginPath()
-    @ctx.lineWidth = 1
-    @ctx.strokeStyle = '#eee'
+    @ctx.lineWidth = 2
+    @ctx.strokeStyle = '#aaa'
 
-    xInterval = ~~(@props.width / @props.size)
-    yInterval = ~~(@props.height / @props.size)
-
-    for x in [1..@props.size]
-      @ctx.moveTo (x * xInterval) + 0.5, 0
-      @ctx.lineTo (x * xInterval) + 0.5, @props.height
+    for x in [0..@props.size]
+      @ctx.moveTo (x * @cellW) + 0, 0
+      @ctx.lineTo (x * @cellW) + 0, @props.height
       @ctx.stroke()
 
-    for y in [1..@props.size]
-      @ctx.moveTo 0,            (y * yInterval) + 0.5
-      @ctx.lineTo @props.height,(y * yInterval) + 0.5
+    for y in [0..@props.size]
+      @ctx.moveTo 0,            (y * @cellH) + 0
+      @ctx.lineTo @props.height,(y * @cellH) + 0
       @ctx.stroke()
