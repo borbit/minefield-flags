@@ -15,6 +15,7 @@
     "gulp-uglify": "^0.2.1",
     "browserify-ejs": "0.0.2",
     "consolidate": "^0.10.0",
+    "coffee-script": "^1.7.1",
     "coffee-reactify": "^0.4.0",
     "coffee-react": "^0.4.0",
     "coffeeify": "^0.6.0",
