@@ -7,5 +7,11 @@ module.exports = React.createClass
 
   render: ->
     <div className="toolbar">
-      <input type="color" onChange={@onColorSet} value={@props.color} ref="color" />
+      <button className="toolbar__tool toolbar__tool_pen">Pen</button>
+      <button className="toolbar__tool toolbar__tool_eraser">Eraser</button>
+      <input className="toolbar__tool toolbar__tool_color" type="color"
+        onChange={@onColorSet}
+        value={@props.color}
+        ref="color"
+      />
     </div>

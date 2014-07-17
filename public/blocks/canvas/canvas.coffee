@@ -1,25 +1,30 @@
 # @cjsx React.DOM 
 React = require 'react'
 
+previewCellSize = 32
+previewCellsMap = [
+  [1, 1], [2, 1], [1, 2], [0, 3], [2, 3], [0, 6]
+  [1, 9], [2, 9], [0, 11], [1, 13], [0, 15], [1, 15]
+]
+
 module.exports = React.createClass
   componentDidMount: ->
-    canvas = @getDOMNode()
+    @canvas = @refs.canvas.getDOMNode()
+    @preview = @refs.preview.getDOMNode()
 
     @cellW = ~~(@props.width / @props.size)
     @cellH = ~~(@props.height / @props.size)
-    @offsetL = canvas.offsetLeft
-    @offsetT = canvas.offsetTop
 
+    @ctxc = @canvas.getContext '2d'
+    @ctxp = @preview.getContext '2d'
     @mousePressed = no
-    @ctx = canvas.getContext '2d'
     @drawGrid()
 
-  onClick: (event) ->
-    cellX = ~~((event.pageX - @offsetL) / @cellW)
-    cellY = ~~((event.pageY - @offsetT) / @cellH)
-    
-    @ctx.fillStyle = @props.color
-    @ctx.fillRect cellX * @cellW, cellY * @cellH, @cellW, @cellH
+  onClick: (e) ->
+    @drawCell e
+
+  onMouseMove: (e) ->
+    @drawCell(e) if @mousePressed
 
   onMouseDown: ->
     @mousePressed = yes
@@ -27,35 +32,46 @@ module.exports = React.createClass
   onMouseUp: ->
     @mousePressed = no
 
-  onMouseMove: (e) ->
-    if @mousePressed
-      cellX = ~~((event.pageX - @offsetL) / @cellW)
-      cellY = ~~((event.pageY - @offsetT) / @cellH)
-      
-      @ctx.fillStyle = @props.color
-      @ctx.fillRect cellX * @cellW, cellY * @cellH, @cellW, @cellH
+  drawCell: (e) ->
+    @offsetL = @canvas.offsetLeft
+    @offsetT = @canvas.offsetTop
+
+    cellX = ~~((e.pageX - @offsetL) / @cellW)
+    cellY = ~~((e.pageY - @offsetT) / @cellH)
+    
+    @ctxp.fillStyle = @props.color
+    @ctxc.fillStyle = @props.color
+    @ctxc.fillRect cellX * @cellW, cellY * @cellH, @cellW, @cellH
+    
+    previewCellsMap.forEach (coords) =>
+      x = (coords[0] * previewCellSize) + cellX * 2
+      y = (coords[1] * previewCellSize) + cellY * 2
+      @ctxp.fillRect x, y, 2, 2
 
   render: ->
-    <canvas className="canvas"
-      width={@props.width}
-      height={@props.height}
-      onMouseMove={@onMouseMove}
-      onMouseDown={@onMouseDown}
-      onMouseUp={@onMouseUp}
-      onClick={@onClick}>
-    </canvas>
+    <div className="canvas">
+      <canvas ref="preview" className="canvas__preview" width=98 height=546 />
+      <canvas ref="canvas" className="canvas__canvas"
+        width={@props.width}
+        height={@props.height}
+        onMouseMove={@onMouseMove}
+        onMouseDown={@onMouseDown}
+        onMouseUp={@onMouseUp}
+        onClick={@onClick}>
+      </canvas>
+    </div>
 
   drawGrid: ->
-    @ctx.beginPath()
-    @ctx.lineWidth = 2
-    @ctx.strokeStyle = '#aaa'
+    @ctxc.beginPath()
+    @ctxc.lineWidth = 2
+    @ctxc.strokeStyle = '#333'
 
     for x in [0..@props.size]
-      @ctx.moveTo (x * @cellW) + 0, 0
-      @ctx.lineTo (x * @cellW) + 0, @props.height
-      @ctx.stroke()
+      @ctxc.moveTo (x * @cellW) + 0, 0
+      @ctxc.lineTo (x * @cellW) + 0, @props.height
+      @ctxc.stroke()
 
     for y in [0..@props.size]
-      @ctx.moveTo 0,            (y * @cellH) + 0
-      @ctx.lineTo @props.height,(y * @cellH) + 0
-      @ctx.stroke()
+      @ctxc.moveTo 0,            (y * @cellH) + 0
+      @ctxc.lineTo @props.height,(y * @cellH) + 0
+      @ctxc.stroke()
