@@ -50,7 +50,7 @@ module.exports = React.createClass
 
   render: ->
     <div className="canvas">
-      <canvas ref="preview" className="canvas__preview" width=98 height=546 />
+      <canvas ref="preview" className="canvas__preview" width=546 height=546 />
       <canvas ref="canvas" className="canvas__canvas"
         width={@props.width}
         height={@props.height}
