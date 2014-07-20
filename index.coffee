@@ -1,6 +1,6 @@
 express = require 'express'
 engines = require 'consolidate'
-config  = require 'config'
+config = require 'config'
 
 app = express()
 
@@ -27,8 +27,10 @@ app.locals.dist = (src) ->
     src = manifest[src]  
   "/dist/#{src}"
 
-app.get '/', (req, res) ->
-  res.render 'index/index'
+[
+  require './routes/index'
+].forEach (route) ->
+  route app
 
 app.listen config.port, config.host, (err) ->
   throw err if err

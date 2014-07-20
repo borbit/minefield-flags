@@ -11,12 +11,9 @@ module.exports = React.createClass
   onColorSet: (color) ->
     @setState color: color
   
-  onPenSet: ->
-    @setState tool: 'pen'
+  onToolSet: (tool) ->
+    @setState tool: tool
   
-  onEraserSet: ->
-    @setState tool: 'eraser'
-
   render: ->
     <div className="easel">
       <div className="easel__canvas">
@@ -34,8 +31,7 @@ module.exports = React.createClass
           tool={@state.tool}
           color={@state.color}
           onColorSet={@onColorSet}
-          onEraserSet={@onEraserSet}
-          onPenSet={@onPenSet}
+          onToolSet={@onToolSet}
         />
       </div>
     </div>

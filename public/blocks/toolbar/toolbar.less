@@ -2,26 +2,63 @@
   &__tool {
     position: relative;
     display: inline-block;
-    margin: 0 0 0 20px;
+    margin: 0 0 0 10px;
     padding: 0;
     height: 30px;
     width: 30px;
     vertical-align: bottom;
     background: transparent;
-    border: solid #fff;
-    border-width: 0 4px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: solid currentColor;
+    border-width: 0 2px;
     text-align: center;
     cursor: pointer;
+    opacity: .5;
+
+    &:after {
+      position: absolute;
+      top: -2px;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      content: "";
+      border: solid currentColor;
+      border-width: 2px 0;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &_pen {
+      background-image: url("img/icon_pen.png");
+    }
+
+    &_eraser {
+      background-image: url("img/icon_eraser.png");
+    }
+
+    &_color {
+      background-image: url("img/icon_color.png");
+    }
+
+    &_submit {
+      background-image: url("img/icon_submit.png");
+    }
   }
 
-  &__tool:after {
+  input[type=color] {
     position: absolute;
-    top: -4px;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    content: "";
-    border: solid #fff;
-    border-width: 4px 0;
+    left: -10000px;
+    top: -10000px;
+  }
+
+  input[type=radio] {
+    display: none;
+  }
+
+  input:checked + &__tool {
+    opacity: 1;
   }
 }
