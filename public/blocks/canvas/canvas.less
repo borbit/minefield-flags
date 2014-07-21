@@ -1,38 +1,54 @@
 .canvas {
   position: relative;
   z-index: 1;
-  width: 1118px;
+  width: 1120px;
 
   &__preview {
     float: left;
-    margin-top: -1px;
-    margin-left: -1px;
-    margin-right: 20px;
+    position: relative; 
     background: repeat center;
     background-image: url('img/preview.png');
     border: solid currentColor;
-    border-width: 2px;
+    border-width: 0 2px;
+    margin-right: 20px;
+
+    &:after {
+      position: absolute;
+      z-index: -1;
+      top: -2px;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      content: "";
+      border: solid currentColor;
+      border-width: 2px 0;
+    }
   }
 
   &__canvas {
-    display: block;
+    float: left;
     position: relative;
+    padding: 1px;
     border: solid currentColor;
-    border-width: 2px;
+    border-width: 0 2px;
     background: repeat center;
     background-image: url('img/canvas.png');
     cursor: pointer;
 
-    // &:after {
-    //   position: absolute;
-    //   z-index: -1;
-    //   top: -2px;
-    //   left: 0;
-    //   height: 100%;
-    //   width: 100%;
-    //   content: "";
-    //   border: solid currentColor;
-    //   border-width: 2px 0;
-    // }
+    &:after {
+      position: absolute;
+      z-index: -1;
+      top: -2px;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      content: "";
+      border: solid currentColor;
+      border-width: 2px 0;
+    }
+  }
+
+  canvas {
+    display: block;
   }
 }

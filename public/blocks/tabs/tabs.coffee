@@ -2,9 +2,15 @@
 React = require 'react'
 
 module.exports = React.createClass
+  onChange: (e) ->
+    @props.onChange e.currentTarget.dataset.page
+
   render: ->
-    <ul className="tabs">
-      <li className="tabs__tab tabs__tab_act">DRAW</li>
-      <li className="tabs__tab">GALLERY (53)</li>
-      <li className="tabs__tab">ABOUT</li>
-    </ul>
+    <div className="tabs">
+      <input type="radio" name="tabs" value="draw" onChange={@onChange} />
+      <label className="tabs__tab">DRAW</label>
+      <input type="radio" name="tabs" value="gallery" onChange={@onChange} />
+      <label className="tabs__tab">GALLERY ({123})</label>
+      <input type="radio" name="tabs" value="about" onChange={@onChange} />
+      <label className="tabs__tab">ABOUT</label>
+    </div>

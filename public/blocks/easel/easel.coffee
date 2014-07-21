@@ -5,7 +5,7 @@ Toolbar = require '../toolbar/toolbar'
 
 module.exports = React.createClass
   getInitialState: ->
-    color: '#ff0000'
+    color: '#aaa'
     tool: 'pen'
 
   onColorSet: (color) ->
