@@ -2,7 +2,6 @@
   &__tool {
     position: relative;
     display: inline-block;
-    margin: 0 0 0 10px;
     padding: 0;
     height: 30px;
     width: 30px;
@@ -10,11 +9,10 @@
     background: transparent;
     background-position: center;
     background-repeat: no-repeat;
-    border: solid #fff;
+    border: solid currentColor;
     border-width: 0 2px;
     text-align: center;
     cursor: pointer;
-    color: #aaa;
 
     &:after {
       position: absolute;
@@ -23,7 +21,7 @@
       height: 100%;
       width: 100%;
       content: "";
-      border: solid #fff;
+      border: solid currentColor;
       border-width: 2px 0;
     }
 
@@ -42,24 +40,18 @@
     }
 
     &_pen {
+      margin-right: -2px;
       background-image: url("img/icon_pen.png");
     }
     &_eraser {
       background-image: url("img/icon_eraser.png");
     }
     &_submit {
+      margin-left: 5px;
       background-image: url("img/icon_submit.png");
     }
-
-    &_color:before {
-      position: absolute;
-      left: 7px;
-      top: 7px;
-      height: 12px;
-      width: 12px;
-      border: 2px solid #fff;
-      background: currentColor;
-      content: "";
+    &_color {
+      margin-left: 10px;
     }
   }
 
