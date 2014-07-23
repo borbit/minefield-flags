@@ -1,3 +1,4 @@
+# @cjsx React.DOM 
 React = require 'react'
 Easel = require '../easel/easel'
 Gallery = require '../gallery/gallery'
