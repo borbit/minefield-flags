@@ -1,16 +1,14 @@
 # @cjsx React.DOM 
 React = require 'react'
+cs = React.addons.classSet
 
 module.exports = React.createClass
-  onChange: (e) ->
-    @props.onChange e.currentTarget.dataset.page
+  onClick: (e) ->
+    @props.onChange e.currentTarget.dataset.value
 
   render: ->
-    <div className="tabs">
-      <input type="radio" name="tabs" value="draw" onChange={@onChange} />
-      <label className="tabs__tab">DRAW</label>
-      <input type="radio" name="tabs" value="gallery" onChange={@onChange} />
-      <label className="tabs__tab">GALLERY ({123})</label>
-      <input type="radio" name="tabs" value="about" onChange={@onChange} />
-      <label className="tabs__tab">ABOUT</label>
-    </div>
+    <ul className="tabs">
+      <li data-value="easel" className={cs 'tabs__tab': yes, 'tabs__tab_active': @props.page is 'easel'} onClick={@onClick}>DRAW</li>
+      <li data-value="gallery" className={cs 'tabs__tab': yes, 'tabs__tab_active': @props.page is 'gallery'} onClick={@onClick}>GALLERY ({123})</li>
+      <li data-value="about" className={cs 'tabs__tab': yes, 'tabs__tab_active': @props.page is 'about'} onClick={@onClick}>ABOUT</li>
+    </ul>

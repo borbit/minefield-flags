@@ -1,0 +1,29 @@
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative; 
+  text-align: center;
+  border: solid currentColor;
+  border-width: 0 2px;
+  height: 563px;
+
+  .box-sizing(border-box);
+
+  &:after {
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    border: solid currentColor;
+    border-width: 2px 0;
+  }
+
+  &__text {
+    line-height: 140%;
+  }
+}

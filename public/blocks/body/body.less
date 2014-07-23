@@ -1,11 +1,16 @@
 .body {
   position: relative;
-  width: 1120px;
+  width: 1152px;
   margin: auto;
   
   &__page {
     .clearfix();
-    margin-top: 54px;
+    display: none;
+    margin-top: 48px;
+
+    &_show {
+      display: block;
+    }
   }
 
   &__tabs {
