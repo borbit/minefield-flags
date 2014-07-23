@@ -9,7 +9,7 @@
     background: transparent;
     background-position: center;
     background-repeat: no-repeat;
-    border: solid currentColor;
+    border: solid #777;
     border-width: 0 2px;
     text-align: center;
     cursor: pointer;
@@ -21,22 +21,14 @@
       height: 100%;
       width: 100%;
       content: "";
-      border: solid currentColor;
+      border: solid;
+      border-color: inherit;
       border-width: 2px 0;
     }
 
     &:hover {
-      opacity: 1;
-    }
-
-    &_pen,
-    &_eraser {
-      opacity: .5;
-    }
-
-    &_color,
-    &_submit {
-      opacity: 1;
+      border-color: #fff;
+      z-index: 1;
     }
 
     &_pen {
@@ -44,14 +36,16 @@
       background-image: url("img/icon_pen.png");
     }
     &_eraser {
+      margin-right: -2px;
       background-image: url("img/icon_eraser.png");
     }
     &_submit {
-      margin-left: 5px;
       background-image: url("img/icon_submit.png");
+      border-color: #fff;
     }
     &_color {
-      margin-left: 10px;
+      margin-right: -2px;
+      border-color: #fff;
     }
   }
 
@@ -66,6 +60,7 @@
   }
 
   input:checked + &__tool {
-    opacity: 1;
+    border-color: #fff;
+    z-index: 1;
   }
 }

@@ -5,30 +5,39 @@
 
   &__tab {
     float: left;
+    z-index: 0;
     position: relative;
     display: inline-block;
-    padding: 12px 14px 6px 14px;
+    padding: 10px 14px;
     margin-left: -2px;
-    border: solid currentColor;
+    border: solid #777;
     border-width: 0 2px;
     font-size: 30px;
     letter-spacing: -3px;
     cursor: pointer;
-    opacity: .6;
+    color: #777;
   }
 
   &__tab:after {
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 0;
     width: 100%;
-    border-top: 2px solid currentColor;
+    border: solid;
+    border-color: inherit;
+    border-width: 2px 0 0;
     content: "";
   }
   
   &__tab:hover,
   &__tab_active {
-    opacity: 1;
+    z-index: 1;
+    border-color: #fff;
+    color: #fff;
+  }
+
+  &__tab_active {
+    background: #222;
   }
 }
 

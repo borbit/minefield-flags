@@ -1,52 +1,21 @@
 .canvas {
+  .clearfix();
   position: relative;
   z-index: 1;
   width: 100%;
 
   &__preview {
     float: left;
-    padding: 8px;
-    position: relative; 
     background: no-repeat center;
     background-image: url('img/preview.png');
-    border: solid currentColor;
-    border-width: 0 2px;
-    margin-right: 19px;
-
-    &:after {
-      position: absolute;
-      z-index: -1;
-      top: -2px;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      content: "";
-      border: solid currentColor;
-      border-width: 2px 0;
-    }
   }
 
   &__canvas {
-    float: left;
-    position: relative;
-    padding: 1px;
-    border: solid currentColor;
-    border-width: 0 2px;
-    background: repeat center;
+    float: right;
+    background: repeat top left;
     background-image: url('img/canvas.png');
+    border: 1px solid #272727;
     cursor: pointer;
-
-    &:after {
-      position: absolute;
-      z-index: -1;
-      top: -2px;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      content: "";
-      border: solid currentColor;
-      border-width: 2px 0;
-    }
   }
 
   canvas {

@@ -1,20 +1,40 @@
 .body {
-  position: relative;
-  width: 1152px;
+  position: absolute;
+  width: 1190px;
+  height: 670px;
   margin: auto;
+  margin-top: -333px;
+  margin-left: -595px;
+  left: 50%;
+  top: 50%;
+
+  &__tabs {
+    .clearfix();
+  }
   
   &__page {
-    .clearfix();
+    .box-sizing(border-box);
+
     display: none;
-    margin-top: 48px;
+    position: relative;
+    border: solid currentColor;
+    border-width: 0 2px;
+    padding: 32px;
+    height: 610px;
 
     &_show {
       display: block;
     }
-  }
 
-  &__tabs {
-    .clearfix();
-    margin-left: 0 0 0 4px;
+    &:after {
+      position: absolute;
+      top: -2px;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      content: "";
+      border: solid currentColor;
+      border-width: 2px 0;
+    }
   }
 }

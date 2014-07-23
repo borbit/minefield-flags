@@ -9,7 +9,7 @@ cs = React.addons.classSet
 
 module.exports = React.createClass
   getInitialState: ->
-    page: 'about'
+    page: 'easel'
 
   onTabChange: (page) ->
     @setState page: page
@@ -20,7 +20,7 @@ module.exports = React.createClass
         <Tabs onChange={@onTabChange} page={@state.page} />
       </div>
       <div className={cs 'body__page': yes, 'body__page_show': @state.page is 'easel'}>
-        <Easel width=561 height=561 size=17 />
+        <Easel width=544 height=544 size=17 />
       </div>
       <div className={cs 'body__page': yes, 'body__page_show': @state.page is 'gallery'}>
         <Gallery />

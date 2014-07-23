@@ -1,6 +1,4 @@
 React = require 'react'
-Easel = require 'public/blocks/easel/easel'
-Tabs = require 'public/blocks/tabs/tabs'
 
 module.exports = (app) ->
   app.get '/', (req, res) ->

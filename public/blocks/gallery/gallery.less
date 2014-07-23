@@ -1,31 +1,15 @@
 .gallery {
   position: relative; 
-  padding: 6px;
   background: repeat left top;
+  background-position: 17px 17px;
   background-image: url("img/cell.png");
   background-origin: content-box;
   background-clip: content-box;
-  border: solid currentColor;
-  border-width: 0 2px;
-  height: 563px;
-
-  .box-sizing(border-box);
-
-  &:after {
-    position: absolute;
-    z-index: -1;
-    top: -2px;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    content: "";
-    border: solid currentColor;
-    border-width: 2px 0;
-  }
+  height: 100%;
 
   &__flag {
     float: left;
-    margin: 5px;
+    margin: 0;
     height: 34px;
     width: 34px;
   }
