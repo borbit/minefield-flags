@@ -1,11 +1,20 @@
 .about {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 100%;
+  z-index: 2;
   
   &__text {
     line-height: 140%;
+  }
+
+  iframe {
+    width: 90px;
+    height:21px;
+    overflow:hidden; 
+    border:none;
   }
 }
