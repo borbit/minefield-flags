@@ -3,14 +3,21 @@
   background: repeat left top;
   background-position: 17px 17px;
   background-image: url("img/cell.png");
-  background-origin: content-box;
-  background-clip: content-box;
+  padding: 2px 0 0 2px;
   height: 100%;
+  z-index: 1;
+
+  .box-sizing(border-box);
 
   &__flag {
     float: left;
-    margin: 0;
+    position: relative;
+    margin: -2px 32px 32px -2px;
     height: 34px;
     width: 34px;
+
+    &:hover {
+      z-index: 1;
+    }
   }
 }

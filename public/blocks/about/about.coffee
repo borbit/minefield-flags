@@ -26,13 +26,13 @@ module.exports = React.createClass
           <iframe
             src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmienfield.com%2Fflags&layout=button_count&action=like&appId=230676180385849"
             allowTransparency="true"
-            frameborder="0"
+            frameBorder="0"
             scrolling="no"
           />
           <iframe 
             src="https://platform.twitter.com/widgets/tweet_button.html"
             allowTransparency="true"
-            frameborder="0"
+            frameBorder="0"
             scrolling="no"
           />
         </p>

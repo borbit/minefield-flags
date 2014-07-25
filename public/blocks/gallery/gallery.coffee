@@ -3,8 +3,8 @@ React = require 'react'
 
 module.exports = React.createClass
   render: ->
-    flags = [0..31].map ->
-      <div className="gallery__flag" />
+    flags = @props.flags.map (flag) ->
+      <div className="gallery__flag" style={backgroundImage: "url(/img/flags/#{flag}.png)"}/>
 
     <div className="gallery">
       {flags}

@@ -9,6 +9,6 @@ module.exports = React.createClass
   render: ->
     <ul className="tabs">
       <li data-value="easel" className={cs 'tabs__tab': yes, 'tabs__tab_active': @props.page is 'easel'} onClick={@onClick}>DRAW</li>
-      <li data-value="gallery" className={cs 'tabs__tab': yes, 'tabs__tab_active': @props.page is 'gallery'} onClick={@onClick}>GALLERY ({1})</li>
+      <li data-value="gallery" className={cs 'tabs__tab': yes, 'tabs__tab_active': @props.page is 'gallery'} onClick={@onClick}>GALLERY ({@props.flags.length})</li>
       <li data-value="about" className={cs 'tabs__tab': yes, 'tabs__tab_active': @props.page is 'about'} onClick={@onClick}>ABOUT</li>
     </ul>

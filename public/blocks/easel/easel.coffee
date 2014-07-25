@@ -13,6 +13,9 @@ module.exports = React.createClass
   
   onToolSet: (tool) ->
     @setState tool: tool
+
+  onSubmit: ->
+    @props.onSubmit @refs.canvas.flag
   
   render: ->
     <div className="easel">
@@ -20,10 +23,10 @@ module.exports = React.createClass
         <Canvas
           tool={@state.tool}
           color={@state.color}
-          pixels={@state.pixels}
           width={@props.width}
           height={@props.height}
           size={@props.size}
+          ref="canvas"
         />
       </div>
       <div className="easel__toolbar">
@@ -32,6 +35,7 @@ module.exports = React.createClass
           color={@state.color}
           onColorSet={@onColorSet}
           onToolSet={@onToolSet}
+          onSubmit={@onSubmit}
         />
       </div>
     </div>
