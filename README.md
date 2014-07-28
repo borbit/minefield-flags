@@ -5,3 +5,30 @@ The idea of this project it to enable Minefield's players draw their own custom 
 
 Server architecture is based on [Blank](https://github.com/borbit/blank).
 
+Installation
+------------
+
+1. Install [Node.js](http://nodejs.org/)
+2. Install [Foreman](https://github.com/ddollar/foreman)
+3. Clone the repository:
+
+  ```
+  git clone git@github.com:borbit/minefield-flags.git & cd minefield-flags
+  ```
+  
+4. Install dependencies:
+
+  ```
+  npm install
+  ```
+  
+5. Run:
+
+  ```
+  foreamn start
+  ```
+
+License
+-------
+
+[Do WTF You Want to Public License](http://www.wtfpl.net/)
