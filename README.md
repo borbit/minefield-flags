@@ -10,23 +10,9 @@ Installation
 
 1. Install [Node.js](http://nodejs.org/)
 2. Install [Foreman](https://github.com/ddollar/foreman)
-3. Clone the repository:
-
-  ```
-  git clone git@github.com:borbit/minefield-flags.git & cd minefield-flags
-  ```
-  
-4. Install dependencies:
-
-  ```
-  npm install
-  ```
-  
-5. Run:
-
-  ```
-  foreamn start
-  ```
+3. Clone the repository: `git clone git@github.com:borbit/minefield-flags.git & cd minefield-flags`
+4. Install dependencies: `npm install`
+5. Run: `foreamn start`
 
 License
 -------
