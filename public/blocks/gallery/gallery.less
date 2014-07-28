@@ -1,7 +1,7 @@
 .gallery {
   position: relative; 
   background: repeat left top;
-  background-position: 17px 17px;
+  background-position: 0 0;
   background-image: url("img/cell.png");
   padding: 2px 0 0 2px;
   height: 100%;
@@ -18,6 +18,10 @@
 
     &:hover {
       z-index: 1;
+    }
+
+    &:nth-of-type(18n) {
+      margin-right: 0;
     }
   }
 }

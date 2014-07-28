@@ -1,5 +1,6 @@
 # @cjsx React.DOM 
 React = require 'react'
+cs = React.addons.classSet
 
 module.exports = React.createClass
   onColorSet: ->
@@ -13,6 +14,10 @@ module.exports = React.createClass
     e.initEvent 'click', yes, no
     @refs.color.getDOMNode().dispatchEvent e
 
+  onSubmitClick: ->
+    unless @props.submiting
+      @props.onSubmit()
+
   render: ->
     tools = []
     
@@ -24,10 +29,19 @@ module.exports = React.createClass
       tools.push <input type="radio" name="tool" onChange={@onToolChange} value={tool} id={attrId} checked={attrChecked} />
       tools.push <label className={attrClass} htmlFor={attrId}></label>
 
+    toolColorClass = cs
+      'toolbar__tool': yes
+      'toolbar__tool_color': yes
+
+    toolSubmitClass = cs
+      'toolbar__tool': yes
+      'toolbar__tool_submit': yes
+      'toolbar__tool_submiting': @props.submiting
+
     <div className="toolbar">
       {tools}
-      <b className="toolbar__tool toolbar__tool_color" style={background: @props.color} onClick={@onColorClick}></b>
-      <b className="toolbar__tool toolbar__tool_submit" onClick={@props.onSubmit}></b>
+      <b className={toolColorClass} style={background: @props.color} onClick={@onColorClick}></b>
+      <b className={toolSubmitClass} onClick={@onSubmitClick}></b>
       <input type="color"
         onChange={@onColorSet}
         value={@props.color}

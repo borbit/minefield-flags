@@ -1,5 +1,6 @@
 redis = require 'redis-url'
 parser = require 'body-parser'
+crypto = require 'crypto'
 config = require 'config'
 fs = require 'fs'
 
@@ -19,13 +20,13 @@ module.exports = (app) ->
       res.json flags
 
   app.post '/', parser.text(type: 'application/upload'), (req, res, next) ->
-    now = Date.now()
+    md5 = crypto.createHash 'md5'
+    md5 = md5.update req.body
+    md5 = md5.digest 'hex'
+
     flag = new Buffer req.body, 'base64'
-    file = "#{config.flags_dir_path}/#{now}.png"
+    file = "#{config.flags_dir_path}/#{md5}.png"
 
     fs.writeFile file, flag, (err) ->
       next err if err
-
-      redisClient.zadd 'flags', now, now, (err) ->
-        next err if err        
-        res.send 200
+      res.send 200

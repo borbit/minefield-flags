@@ -1,0 +1,83 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: .5;
+  }
+
+  &__window {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    width: 400px;
+    background: #222;
+    border: solid #222;
+    border-width: 2px 0;
+
+    &:before {
+      position: absolute;
+      z-index: -1px;
+      content: "";
+      left: -2px;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      border: solid #222;
+      border-width: 0 2px;
+    }
+  }
+
+  &__content {
+    margin-bottom: 20px;
+    line-height: 140%;
+    text-align: center;
+  }
+
+  &__close,
+  &__donate {
+    display: block;
+    position: relative;
+    padding: 10px 0;
+    width: 100%;
+    margin: 0;
+
+    background: none;
+    border: solid currentColor;
+    border-width: 2px 0;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+
+    &:before {
+      position: absolute;
+      z-index: -1px;
+      content: "";
+      left: -2px;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      border: solid currentColor;
+      border-width: 0 2px;
+    }
+  }
+
+  &__close {
+    margin-top: 10px;
+  }
+}

@@ -5,7 +5,7 @@ Toolbar = require '../toolbar/toolbar'
 
 module.exports = React.createClass
   getInitialState: ->
-    color: 'orange'
+    color: '#ffa500'
     tool: 'pen'
 
   onColorSet: (color) ->
@@ -33,6 +33,7 @@ module.exports = React.createClass
         <Toolbar
           tool={@state.tool}
           color={@state.color}
+          submiting={@props.submiting}
           onColorSet={@onColorSet}
           onToolSet={@onToolSet}
           onSubmit={@onSubmit}
