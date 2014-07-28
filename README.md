@@ -23,7 +23,7 @@ Installation
 5. Run:
 
     ```
-    foreamn start
+    foreman start
     ```
 
 License
