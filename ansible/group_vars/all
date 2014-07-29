@@ -1,0 +1,18 @@
+minefield_flags:
+  service: minefield-flags
+  autostart: false
+  repo: git@github.com:borbit/minefield-flags.git
+  version: "{{ lookup('pipe','basename $(git symbolic-ref HEAD)') }}"
+  skip_clone: false
+  dir: /opt/minefield-flags
+  logdir: /var/log/minefield
+  env:
+    NODE_ENV: development
+    REDIS_URL: redis://localhost
+
+  hostname: flags.minefield.dev
+  port: 5000
+  workers: 1
+
+  start: ./bin/server
+  build_command: ./bin/build

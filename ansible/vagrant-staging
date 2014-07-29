@@ -1,0 +1,16 @@
+[loadbalancer]
+flags.minefield.dev
+
+[database]
+flags.minefield.dev
+
+[app]
+flags.minefield.dev
+
+[vagrant-staging:children]
+loadbalancer
+database
+app
+
+[all:vars]
+ansible_ssh_user=vagrant

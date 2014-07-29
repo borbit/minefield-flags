@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: George Miroshnykov
+  description: install foreman (http://ddollar.github.io/foreman/)
+  min_ansible_version: 1.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  categories:
+  - system
+
+dependencies:
+  - role: laggyluke.ruby

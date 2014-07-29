@@ -1,0 +1,6 @@
+inventory_hosts:
+  interface: eth1
+
+minefield_flags:
+  dir: /opt/minefield-flags-staging
+  autostart: true

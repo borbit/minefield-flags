@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: George Miroshnykov
+  description: set hostname to Ansible's inventory hostname
+  min_ansible_version: 1.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  categories:
+  - cloud
+  - networking
+  - system
+dependencies: []

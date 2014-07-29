@@ -1,0 +1,5 @@
+inventory_hosts:
+  interface: eth1
+
+minefield_flags:
+  skip_clone: true

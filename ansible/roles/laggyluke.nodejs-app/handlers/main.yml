@@ -1,0 +1,11 @@
+- name: build {{ nodejs_app.service }}
+  command: >
+    {{ nodejs_app.build_command }}
+    chdir={{ nodejs_app.dir }}
+  when: "'build_command' in nodejs_app"
+
+- name: restart {{ nodejs_app.service }}
+  sudo: true
+  action: service name={{ nodejs_app.service }}-{{ item }} state=restarted
+  with_sequence: start=1 end={{ nodejs_app.workers }}
+  when: nodejs_app.autostart

@@ -1,0 +1,5 @@
+{% for k, v in redis.options.iteritems() %}
+{% if v != "" %}
+{{ k }} {{ v }}
+{% endif %}
+{% endfor %}

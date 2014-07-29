@@ -1,0 +1,4 @@
+dependencies:
+  - role: laggyluke.nodejs-app
+    nodejs_app: '{{ minefield_flags }}'
+  - role: laggyluke.foreman

@@ -1,0 +1,16 @@
+---
+- name: save all hosts known to Ansible into /etc/hosts
+  sudo: true
+  lineinfile: >
+    dest=/etc/hosts
+    line="{{ '127.0.0.1' if inventory_hostname == item else hostvars[item]['ansible_' + inventory_hosts.interface].ipv4.address }} {{ item }} # {{ item | md5 }}"
+    regexp='{{ item | md5 }}$'
+  with_items: groups.all
+
+- name: add all localhost aliases to /etc/hosts
+  sudo: true
+  lineinfile: >
+    dest=/etc/hosts
+    line="127.0.0.1 {{ item }} # {{ item | md5 }}"
+    regexp='{{ item | md5 }}$'
+  with_items: inventory_hosts.localhosts

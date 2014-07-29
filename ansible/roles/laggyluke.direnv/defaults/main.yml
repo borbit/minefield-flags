@@ -1,0 +1,3 @@
+direnv:
+  bin_url: https://github.com/zimbatm/direnv/releases/download/v2.4.0/direnv.linux-amd64
+  bin_sha256: 4fddd2de4ae1769a87f5c14c691d297b7f664abce0b5329c8a30bde03af949d3

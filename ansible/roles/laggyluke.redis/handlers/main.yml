@@ -1,0 +1,5 @@
+- name: restart {{ redis.service }}
+  sudo: true
+  service: >
+    name={{ redis.service }}
+    state=restarted

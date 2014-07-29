@@ -1,0 +1,4 @@
+---
+inventory_hosts:
+  interface: eth0
+  localhosts: []

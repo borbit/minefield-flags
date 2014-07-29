@@ -1,0 +1,7 @@
+- name: generate app vhost
+  sudo: true
+  template: >
+    src=app.conf.j2
+    dest="/etc/nginx/sites-enabled/{{ minefield_flags.hostname }}"
+    mode=0644
+  notify: reload nginx

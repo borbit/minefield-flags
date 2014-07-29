@@ -1,0 +1,3 @@
+- name: install package
+  sudo: true
+  apt: pkg=ruby1.9.1-dev

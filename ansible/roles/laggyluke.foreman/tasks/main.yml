@@ -1,0 +1,3 @@
+- name: foreman - install gem
+  sudo: true
+  gem: name=foreman state=present user_install=no

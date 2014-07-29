@@ -1,0 +1,4 @@
+- include: common.yml
+- include: database.yml
+- include: app.yml
+- include: loadbalancer.yml

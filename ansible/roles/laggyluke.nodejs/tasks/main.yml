@@ -1,0 +1,27 @@
+---
+- name: install python-pycurl
+  sudo: yes
+  apt: pkg=python-pycurl
+
+- name: add 'chris-lea' PPA for Node.js
+  sudo: true
+  apt_repository: repo=ppa:chris-lea/node.js
+
+- name: install package
+  sudo: true
+  apt: pkg=nodejs
+
+- name: generate ~/.npmrc
+  template: >
+    src=npmrc.j2
+    dest=~/.npmrc
+    mode=0644
+  when: nodejs.npmrc|length > 0
+
+- name: add `./node_modules/.bin` to PATH
+  sudo: true
+  copy: >
+    content='export PATH="./node_modules/.bin:$PATH"'
+    dest=/etc/profile.d/nodejs_path.sh
+    mode=0644
+  when: nodejs.add_node_modules_bin_to_path

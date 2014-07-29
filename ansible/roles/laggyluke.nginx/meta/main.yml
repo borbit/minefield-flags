@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: George Miroshnykov
+  description: install Nginx
+  min_ansible_version: 1.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+  categories:
+  - web

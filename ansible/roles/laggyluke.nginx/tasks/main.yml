@@ -1,0 +1,21 @@
+- name: add nginx PPA
+  sudo: true
+  apt_repository: repo=ppa:nginx/stable
+
+- name: install 'nginx'
+  sudo: true
+  apt: pkg=nginx state=present
+
+- name: delete nginx default config
+  sudo: true
+  file: >
+    path=/etc/nginx/sites-available/default
+    state=absent
+  notify: restart nginx
+
+- name: delete nginx default config symlink
+  sudo: true
+  file: >
+    path=/etc/nginx/sites-enabled/default
+    state=absent
+  notify: restart nginx
