@@ -62,14 +62,14 @@
   file: >
     path={{ nodejs_app.logdir }}
     state=directory
-    owner=nobody
-    group=nogroup
+    owner={{ nodejs_app.owner }}
+    group={{ nodejs_app.group }}
 
 - name: touch log
   sudo: true
   file: >
     path={{ nodejs_app.logdir }}/{{ nodejs_app.service }}.log
     state=touch
-    owner=nobody
-    group=nogroup
+    owner={{ nodejs_app.owner }}
+    group={{ nodejs_app.group }}
   changed_when: false

@@ -5,26 +5,56 @@ The idea of this project it to enable Minefield's players draw their own custom 
 
 Server architecture is based on [Blank](https://github.com/borbit/blank).
 
-Installation
-------------
+Development
+-----------
 
-1. Install [Node.js](http://nodejs.org/)
-2. Install [Foreman](https://github.com/ddollar/foreman)
-3. Clone the repository:
+### Requirements
 
-    ```
-    git clone git@github.com:borbit/minefield-flags.git & cd minefield-flags
-    ```
-4. Install dependencies:
+* [Vagrant](http://www.vagrantup.com/)
+* [Ansible](http://docs.ansible.com/)
 
-    ```
-    npm install
-    ```
-5. Run:
 
-    ```
-    foreman start
-    ```
+### Workflow
+
+1. Clone the repository:
+
+        git clone git@github.com:borbit/minefield-flags.git
+        cd minefield-flags
+
+2. Provision a VM using Vagrant and SSH inside:
+
+        vagrant up
+        vagrant ssh
+        cd /opt/minefield-flags
+
+3. Run minefield-flags using Foreman:
+
+        foreman start
+
+
+Production
+----------
+
+### Requirements
+
+* Ansible
+
+
+### Workflow
+
+1. Clone the repository:
+
+        git clone git@github.com:borbit/minefield-flags.git
+        cd minefield-flags
+
+2. Go into `ansible` directory:
+
+        cd ansible
+
+3. Run Ansible:
+
+        ansible-playbook -i production --ask-sudo-pass all.yml
+
 
 License
 -------

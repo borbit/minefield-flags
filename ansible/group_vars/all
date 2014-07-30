@@ -13,6 +13,8 @@ minefield_flags:
   hostname: flags.minefield.dev
   port: 5000
   workers: 1
+  owner: "{{ ansible_ssh_user }}"
+  group: "{{ ansible_ssh_user }}"
 
   start: ./bin/server
   build_command: ./bin/build
