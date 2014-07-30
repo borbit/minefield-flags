@@ -4,8 +4,8 @@ stop on stopping {{ nodejs_app.service }}
 respawn
 respawn limit 10 5
 
-setuid nobody
-setgid nogroup
+setuid {{ nodejs_app.owner }}
+setgid {{ nodejs_app.group }}
 
 env PORT={{ nodejs_app.port|int + item|int - 1 }}
 env HOME={{ ansible_env.HOME }}

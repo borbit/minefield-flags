@@ -1,0 +1,6 @@
+minefield_flags:
+  autostart: true
+
+redis:
+  options:
+    bind: 127.0.0.1
