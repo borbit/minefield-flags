@@ -60,6 +60,7 @@ module.exports = React.createClass
       'body__page_show': @state.page is 'easel'
     classGallery = cs
       'body__page': yes
+      'body__page_gallery': yes
       'body__page_show': @state.page is 'gallery'
     classAbout = cs
       'body__page': yes
