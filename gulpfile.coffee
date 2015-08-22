@@ -11,7 +11,7 @@ gulpCSSO        = require 'gulp-csso'
 
 globAllLess     = './public/!(dist)/**/*.less'
 globAllCoffee   = './public/!(dist)/**/*.coffee'
-globAllFiles    = './public/!(dist)/**/*.{png,jpg,jpeg,gif,svg,woff,ico}'
+globAllFiles    = './public/(img|blocks|font)/**/*.{png,jpg,jpeg,gif,svg,woff,ico}'
 globAssetsFiles = './public/dist/**/*.{png,jpg,jpeg,gif,svg,woff,ico}'
 globAssetsCss   = './public/dist/**/*.css'
 globAssetsJs    = './public/dist/**/*.js'
