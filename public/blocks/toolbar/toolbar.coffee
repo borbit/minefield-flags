@@ -41,7 +41,7 @@ module.exports = React.createClass
     <div className="toolbar">
       {tools}
       <b className={toolColorClass} style={background: @props.color} onClick={@onColorClick}></b>
-      <b className={toolSubmitClass} onClick={@onSubmitClick}></b>
+      <b className={toolSubmitClass} onClick={@onSubmitClick}>SUBMIT</b>
       <input type="color"
         onChange={@onColorSet}
         value={@props.color}
