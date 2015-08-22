@@ -6,6 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "flags.minefield.dev", primary: true
+  config.vm.boot_timeout = 1000
 
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "private_network", ip: "10.0.10.3"

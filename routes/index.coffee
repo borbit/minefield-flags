@@ -1,4 +1,6 @@
 redis = require 'redis-url'
+express = require 'express'
+basicAuth = require 'basic-auth'
 parser = require 'body-parser'
 crypto = require 'crypto'
 config = require 'config'
@@ -6,6 +8,20 @@ fs = require 'fs'
 
 React = require 'react/addons'
 Body = require 'public/blocks/body/body'
+
+auth = (req, res, next) ->
+  unauthorized = (res) ->
+    res.set 'WWW-Authenticate', 'Basic realm=Authorization Required'
+    res.send 401
+
+  user = basicAuth req
+
+  if not user?.name or not user?.pass
+    return unauthorized res
+  if user.name != 'foo' or user.pass != 'bar'
+    return unauthorized res
+
+  next()
 
 module.exports = (app) ->
   redisClient = redis.connect()
@@ -30,3 +46,9 @@ module.exports = (app) ->
     fs.writeFile file, flag, (err) ->
       next err if err
       res.send 200
+
+  app.get '/admin', auth, (req, res) ->
+    fs.readdir config.flags_dir_path, (err, files) ->
+      files = files.filter (file) -> ~file.indexOf('.png')
+      res.render 'admin/admin', {files}
+
