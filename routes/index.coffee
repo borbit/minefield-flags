@@ -71,8 +71,18 @@ module.exports = (app) ->
     files = req.body.files
     files = [files] unless files.push
     
-    files.forEach (file) ->
-      fs.unlinkSync path.join(config.flags_dir_path, file)
+    if req.body.delete
+      files.forEach (file) ->
+        fs.unlinkSync path.join(config.flags_dir_path, file)
+
+    if req.body.delete or req.body.gallery_remove
+      files.forEach (file, i) ->
+        redisClient.zrem 'flags', file.replace('.png', '')
+
+    if req.body.gallery_add
+      files.forEach (file, i) ->
+        redisClient.zadd 'flags', Date.now()+i, file.replace('.png', '')
+
 
     res.redirect req.url
 
