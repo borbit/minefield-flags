@@ -51,9 +51,18 @@ module.exports = (app) ->
     fs.readdir config.flags_dir_path, (err, files) ->
       page_count = +req.query.page_count or 100
       page_num = +req.query.page_num or 0
+      
+      total_files_count = files.length - 1
+      total_pages_count = Math.ceil(total_files_count / page_count)
 
       files = files.filter (file) -> ~file.indexOf('.png')
       files = files.slice page_num * page_count, (page_num+1) * page_count
 
-      res.render 'admin/admin', {files}
+      res.render 'admin/admin', {
+        files
+        total_files_count
+        total_pages_count
+        page_count
+        page_num
+      }
 

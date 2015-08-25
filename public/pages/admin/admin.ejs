@@ -3,7 +3,23 @@
   locals.page_descr = 'Minefield — Draw custom flag';
 -%>
 <% include ../layout_head.ejs %>
-<% files.forEach(function(file) { %>
-  <img src="/flags/<%=file%>"/>
-<% }) %>
+<form action="" method="post">
+  <div>
+  <% files.forEach(function(file) { %>
+    <label>
+      <input type="checkbox" value="<%=file%>"/>
+      <img src="/flags/<%=file%>"/>
+    </label>
+  <% }) %>
+  <div>
+  <br/>
+  <input type="submit" value="Delete"/>
+</form>
+<br/>
+<br/>
+<% for (var i = 0; i < total_pages_count; i++) { %>
+  <a href="?page_count=<%= page_count %>&page_num=<%= i %>"><%= i+1 %></a>
+<% } %>
+total files: <%= total_files_count %>
+current page: <%= page_num %>
 <% include ../layout_foot.ejs %>
