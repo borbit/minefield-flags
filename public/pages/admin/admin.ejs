@@ -7,7 +7,7 @@
   <div>
   <% files.forEach(function(file) { %>
     <label>
-      <input type="checkbox" value="<%=file%>"/>
+      <input type="checkbox" name="files" value="<%=file%>"/>
       <img src="/flags/<%=file%>"/>
     </label>
   <% }) %>

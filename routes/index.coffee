@@ -4,6 +4,7 @@ basicAuth = require 'basic-auth'
 parser = require 'body-parser'
 crypto = require 'crypto'
 config = require 'config'
+path = require 'path'
 fs = require 'fs'
 
 React = require 'react/addons'
@@ -18,7 +19,7 @@ auth = (req, res, next) ->
 
   if not user?.name or not user?.pass
     return unauthorized res
-  if user.name != 'foo' or user.pass != 'bar'
+  if user.name != config.admin_login or user.pass != config.admin_pass
     return unauthorized res
 
   next()
@@ -65,4 +66,13 @@ module.exports = (app) ->
         page_count
         page_num
       }
+
+  app.post '/admin', auth, parser.urlencoded(extended: no), (req, res) ->
+    files = req.body.files
+    files = [files] unless files.push
+    
+    files.forEach (file) ->
+      fs.unlinkSync path.join(config.flags_dir_path, file)
+
+    res.redirect req.url
 
