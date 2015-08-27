@@ -30,6 +30,20 @@ module.exports = React.createClass
     document.body.addEventListener 'mousedown', @onMouseDown.bind @
     document.body.addEventListener 'mouseup', @onMouseUp.bind @
 
+    @ctxc.mozImageSmoothingEnabled = no
+    @ctxc.webkitImageSmoothingEnabled = no
+    @ctxc.imageSmoothingEnabled = no
+
+    flag = new Image()
+    flag.src = '/blocks/canvas/img/flag.png'
+    flag.onload = =>
+      @ctxc.drawImage flag, 0, 0, 34, 34, 0, 0, 544, 544
+
+      previewCellsMap.forEach (cell) =>
+        x = cell[0] * previewCellSize
+        y = cell[1] * previewCellSize
+        @ctxp.drawImage flag, x, y
+
   onClick: (e) ->
     switch @props.tool
       when 'pen'
