@@ -18,6 +18,7 @@ module.exports = React.createClass
     submitted: no
     submiting: no
     flags: []
+    flag: null
 
   onTabChange: (page) ->
     @setState page: page
@@ -50,6 +51,9 @@ module.exports = React.createClass
         @setState flags: JSON.parse ajax.responseText
     ajax.send()
 
+  onSelectFlag: (flag) ->
+    @setState {flag: flag, page: 'easel'}
+
   render: ->
     modal = null
     if @state.submitted
@@ -57,14 +61,14 @@ module.exports = React.createClass
 
     classEasel = cs
       'body__page': yes
-      'body__page_show': @state.page is 'easel'
+      'body__page_show': yes
     classGallery = cs
       'body__page': yes
       'body__page_gallery': yes
-      'body__page_show': @state.page is 'gallery'
+      'body__page_show': yes
     classAbout = cs
       'body__page': yes
-      'body__page_show': @state.page is 'about'
+      'body__page_show': yes
 
     <main className="body">
       {modal}
@@ -75,19 +79,23 @@ module.exports = React.createClass
           page={@state.page}
         />
       </div>
-      <div className={classEasel}>
-        <Easel
-          size=17 
-          width=544
-          height=544
-          onSubmit={@onSubmit} 
-          submiting={@state.submiting}
-        />
-      </div>
-      <div className={classGallery}>
-        <Gallery flags={@state.flags} />
-      </div>
-      <div className={classAbout}>
-        <About />
-      </div>
+      {if @state.page is 'easel'
+        <div className={classEasel}>
+          <Easel
+            size=17 
+            width=544
+            height=544
+            onSubmit={@onSubmit} 
+            submiting={@state.submiting}
+            flag={@state.flag}
+          />
+        </div>}
+      {if @state.page is 'gallery'
+        <div className={classGallery}>
+          <Gallery flags={@state.flags} onSelect={this.onSelectFlag}/>
+        </div>}
+      {if @state.page is 'about'
+        <div className={classAbout}>
+          <About />
+        </div>}
     </main>

@@ -25,6 +25,7 @@ module.exports = React.createClass
           color={@state.color}
           width={@props.width}
           height={@props.height}
+          flag={@props.flag}
           size={@props.size}
           ref="canvas"
         />

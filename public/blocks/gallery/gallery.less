@@ -16,9 +16,12 @@
     background: #aaa;
     height: 34px;
     width: 34px;
+    cursor: pointer;
 
     &:hover {
-      z-index: 1;
+      background: #777;
+      box-shadow: 0 1px 0 1px #777, 1px 0 0 1px #777,
+        0 -1px 0 1px #777, -1px 0 0 1px #777;
     }
 
     &:nth-of-type(18n) {

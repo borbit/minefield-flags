@@ -34,8 +34,13 @@ module.exports = React.createClass
     @ctxc.webkitImageSmoothingEnabled = no
     @ctxc.imageSmoothingEnabled = no
 
+    flagSrc = '/blocks/canvas/img/flag.png'
+
+    if @props.flag
+      flagSrc = "/flags/#{@props.flag}.png"
+
     flag = new Image()
-    flag.src = '/blocks/canvas/img/flag.png'
+    flag.src = flagSrc
     flag.onload = =>
       @ctxc.drawImage flag, 0, 0, 34, 34, 0, 0, 544, 544
 
@@ -50,6 +55,10 @@ module.exports = React.createClass
         @drawCell e
       when 'eraser'
         @clearCell e
+
+  onRightClick: (e) ->
+    e.preventDefault()
+    @clearCell e
 
   onMouseMove: (e) ->
     @onClick(e) if @mousePressed
@@ -106,6 +115,7 @@ module.exports = React.createClass
           width={@props.width}
           height={@props.height}
           onMouseMove={@onMouseMove}
+          onContextMenu={@onRightClick}
           onClick={@onClick}>
         </canvas>
       </div>
