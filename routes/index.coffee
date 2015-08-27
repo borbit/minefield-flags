@@ -50,6 +50,19 @@ module.exports = (app) ->
 
   app.get '/admin', auth, (req, res) ->
     fs.readdir config.flags_dir_path, (err, files) ->
+      files = files.map (file) ->
+        return {
+          stat: fs.statSync path.join(config.flags_dir_path, file)
+          file: file
+        }
+
+      files = files.sort (a, b) ->
+        a.stat.mtime.getTime() -
+        b.stat.mtime.getTime()
+
+      files = files.map (file) ->
+        file.file
+
       page_count = +req.query.page_count or 100
       page_num = +req.query.page_num or 0
       
