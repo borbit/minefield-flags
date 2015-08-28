@@ -1,3 +1,6 @@
+fs = require 'fs'
+async = require 'async'
+Canvas = require 'canvas'
 redis = require 'redis-url'
 express = require 'express'
 basicAuth = require 'basic-auth'
@@ -83,6 +86,10 @@ module.exports = (app) ->
   app.post '/admin', auth, parser.urlencoded(extended: no), (req, res) ->
     files = req.body.files
     files = [files] unless files.push
+
+    if req.body.build
+      return buildSprite files, (err, sprite) ->
+        res.redirect req.url
     
     if req.body.delete
       files.forEach (file) ->
@@ -98,4 +105,40 @@ module.exports = (app) ->
 
 
     res.redirect req.url
+
+
+
+buildSprite = (files, cb) ->
+  countH = Math.ceil Math.sqrt files.length
+  countV = Math.floor Math.sqrt files.length
+
+  FLAG_SIZE = 34
+
+  canvas = new Canvas(
+    countH * FLAG_SIZE
+  , countV * FLAG_SIZE
+  )
+
+  ctx = canvas.getContext('2d')
+
+  async.forEachOf files, ((file, i, cb) ->
+    x = i % countH
+    y = ~~(i / countH)
+
+    image = new Canvas.Image()
+    image.onerror = cb
+    image.onload = ->
+      ctx.drawImage image, x * FLAG_SIZE, y * FLAG_SIZE
+      cb()
+
+    image.src = path.join(config.flags_dir_path, file)
+  ), (err) ->
+    return cb err if err
+
+    fs.writeFile(
+      config.flags_sprite_path,
+      canvas.toBuffer(),
+      cb
+    )
+
 

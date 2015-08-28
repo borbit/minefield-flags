@@ -4,9 +4,11 @@
   "description": "Front-end server starter kit based on Express, Gulp, Browserify, CoffeeScript, Less and React",
   "author": "Serge Borbit",
   "dependencies": {
+    "async": "^1.4.2",
     "basic-auth": "^1.0.3",
     "body-parser": "^1.5.0",
     "browserify-ejs": "0.0.2",
+    "canvas": "^1.2.7",
     "coffee-react": "^0.4.0",
     "coffee-reactify": "^0.4.0",
     "coffee-script": "^1.7.1",

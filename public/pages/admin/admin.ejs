@@ -14,15 +14,42 @@
   <% }) %>
   <div>
   <br/>
-  <input type="submit" name="gallery_add" value="Add to Gallery"/>
-  <input type="submit" name="gallery_remove" value="Remove from Gallery"/>
-  <input type="submit" name="delete" value="Delete"/>
+  <input type="submit" id="button_gallery_add" name="gallery_add" value="Add to Gallery"/>
+  <input type="submit" id="button_gallery_remove" name="gallery_remove" value="Remove from Gallery"/>
+  <input type="submit" id="button_build" name="build" value="Build Sprite"/>
+  <input type="submit" id="button_delete" name="delete" value="Delete"/>
 </form>
 <br/>
 <br/>
 <% for (var i = 0; i < total_pages_count; i++) { %>
   <a href="?page_count=<%= page_count %>&page_num=<%= i %>"><%= i+1 %></a>
 <% } %>
+<script>
+  document.getElementById('button_gallery_add').addEventListener('click', function(e) {
+    if (!confirm('Are you sure you want to ADD flags to the gallery?')) {
+      e.preventDefault()
+      return false
+    }
+  })
+  document.getElementById('button_gallery_remove').addEventListener('click', function(e) {
+    if (!confirm('Are you sure you want to REMOVE flags from the gallery?')) {
+      e.preventDefault()
+      return false
+    }
+  })
+  document.getElementById('button_build').addEventListener('click', function(e) {
+    if (!confirm('Are you sure you want to BUILD SPRITE?')) {
+      e.preventDefault()
+      return false
+    }
+  })
+  document.getElementById('button_delete').addEventListener('click', function(e) {
+    if (!confirm('Are you sure you want to DELETE flags?')) {
+      e.preventDefault()
+      return false
+    }
+  })
+</script>
 total files: <%= total_files_count %>
 current page: <%= page_num %>
 <% include ../layout_foot.ejs %>
