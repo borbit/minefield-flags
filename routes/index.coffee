@@ -75,13 +75,15 @@ module.exports = (app) ->
       files = files.filter (file) -> ~file.indexOf('.png')
       files = files.slice page_num * page_count, (page_num+1) * page_count
 
-      res.render 'admin/admin', {
-        files
-        total_files_count
-        total_pages_count
-        page_count
-        page_num
-      }
+      redisClient.zrange 'flags', 0, -1, (err, flags) ->
+        res.render 'admin/admin', {
+          files
+          flags
+          total_files_count
+          total_pages_count
+          page_count
+          page_num
+        }
 
   app.post '/admin', auth, parser.urlencoded(extended: no), (req, res) ->
     files = req.body.files

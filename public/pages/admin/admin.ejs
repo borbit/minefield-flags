@@ -7,12 +7,12 @@
 <form action="" method="post">
   <div>
   <% files.forEach(function(file) { %>
-    <label>
+    <label<%- ~flags.indexOf(file.replace('.png', '')) ? ' class="active"' : ''%>>
       <input type="checkbox" name="files" value="<%=file%>"/>
       <img src="/flags/<%=file%>"/>
     </label>
   <% }) %>
-  <div>
+  </div>
   <br/>
   <input type="submit" id="button_gallery_add" name="gallery_add" value="Add to Gallery"/>
   <input type="submit" id="button_gallery_remove" name="gallery_remove" value="Remove from Gallery"/>
