@@ -112,7 +112,7 @@ module.exports = (app) ->
 
 buildSprite = (files, cb) ->
   countH = Math.ceil Math.sqrt files.length
-  countV = Math.floor Math.sqrt files.length
+  countV = Math.ceil Math.sqrt files.length
 
   FLAG_SIZE = 34
 
