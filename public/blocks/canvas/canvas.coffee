@@ -26,6 +26,7 @@ module.exports = React.createClass
     @ctxc = @canvas.getContext '2d'
     @ctxp = @preview.getContext '2d'
     @mousePressed = no
+    @mouseRightPressed = no
 
     document.body.addEventListener 'mousedown', @onMouseDown.bind @
     document.body.addEventListener 'mouseup', @onMouseUp.bind @
@@ -58,16 +59,22 @@ module.exports = React.createClass
 
   onRightClick: (e) ->
     e.preventDefault()
+    @mouseRightPressed = yes
     @clearCell e
 
   onMouseMove: (e) ->
-    @onClick(e) if @mousePressed
+    if @mousePressed
+      if @mouseRightPressed
+        @clearCell e
+      else
+        @onClick e
 
   onMouseDown: ->
     @mousePressed = yes
 
   onMouseUp: ->
     @mousePressed = no
+    @mouseRightPressed = no
 
   drawCell: (e) ->
     coords = @calcCoords e
