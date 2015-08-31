@@ -98,11 +98,4 @@ module.exports = React.createClass
         <div className={classAbout}>
           <About />
         </div>}
-      <div className="body__ads">
-        <ins className="adsbygoogle"
-          style={{'display': 'block'}}
-          data-ad-client="ca-pub-9971465415163109"
-          data-ad-slot="6900512275"
-          data-ad-format="auto"/>
-      </div>
     </main>
